@@ -25,7 +25,7 @@ This project follows **Clean Architecture** organized as a **modular monolith**.
 
 ### Why Clean Architecture
 
-Clean Architecture enforces a strict dependency rule — outer layers depend on inner layers, never the reverse. For a payment system, this means the core business logic (domain) has zero knowledge of PostgreSQL, Redis, or any infrastructure detail. Payment rules can be tested in isolation, databases can be swapped without touching business logic, and the system can be reasoned about without holding the entire stack in my head.
+Clean Architecture enforces a strict dependency rule, outer layers depend on inner layers, never the reverse. For a payment system, this means the core business logic (domain) has zero knowledge of PostgreSQL, Redis, or any infrastructure detail. Payment rules can be tested in isolation, databases can be swapped without touching business logic, and the system can be reasoned about without holding the entire stack in my head.
 
 The dependency direction is always:
 
@@ -42,7 +42,7 @@ I went with a modular monolith because the bounded contexts weren't fully clear 
 
 ### Why We Stay Modular
 
-The monolith is organized around proven bounded contexts — Payments, Merchants, Customers, Notifications. Each module owns its data and logic and communicates through defined interfaces. If a future team needed to extract a module as a service, the boundaries are already drawn — but we don't do that extraction speculatively. Independent scaling or deployment needs to be a demonstrated requirement, not an assumption.
+The monolith is organized around proven bounded contexts. Payments, Merchants, Customers, Notifications. Each module owns its data and logic and communicates through defined interfaces. If a future team needed to extract a module as a service, the boundaries are already drawn, but we don't do that extraction speculatively. Independent scaling or deployment needs to be a demonstrated requirement, not an assumption.
 
 ---
 
@@ -50,7 +50,7 @@ The monolith is organized around proven bounded contexts — Payments, Merchants
 
 Every payment moves through the following stages:
 
-1. **Request Created** — A PaymentIntent is created when a customer initiates a payment or a merchant requests one. This is a record of intent only — no money has moved.
+1. **Request Created** — A PaymentIntent is created when a customer initiates a payment or a merchant requests one. This is a record of intent only, no money has moved.
 2. **Validated** — The intent is validated: does the merchant exist? Is the amount valid? Is the currency supported?
 3. **Processing** — In a real system this is where bank servers are contacted. In this project it is simulated. The outcome is one of three states: `Succeeded`, `Failed`, or `Cancelled`.
 
@@ -78,7 +78,7 @@ Two reasons:
 
 ### Idempotency
 
-The confirm endpoint is idempotent. Every request carries a client-generated idempotency key. Before processing, the server checks if this key has been seen before — if yes, it returns the stored result without reprocessing. This prevents double charges caused by network retries.
+The confirm endpoint is idempotent. Every request carries a client-generated idempotency key. Before processing, the server checks if this key has been seen before, if yes, it returns the stored result without reprocessing. This prevents double charges caused by network retries.
 
 ---
 
