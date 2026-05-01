@@ -31,7 +31,7 @@ The dependency direction is always:
 
 ```
 API → Application → Domain
-Infrastructure → Application → Domain
+Infrastructure → Domain
 ```
 
 Domain never points outward.
