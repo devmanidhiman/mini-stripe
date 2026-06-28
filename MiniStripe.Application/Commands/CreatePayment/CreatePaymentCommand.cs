@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using MiniStripe.Domain.ValueObjects;
 
 namespace MiniStripe.Application.Commands
