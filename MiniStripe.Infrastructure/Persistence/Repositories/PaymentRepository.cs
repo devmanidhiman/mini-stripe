@@ -1,7 +1,7 @@
 using MiniStripe.Domain.Entities;
 using MiniStripe.Domain.Interfaces;
 
-namespace MiniStripe.Infrastructure.Persistence;
+namespace MiniStripe.Infrastructure.Persistence.Repositories;
 
 public class PaymentRepository : IPaymentRepository
 {
