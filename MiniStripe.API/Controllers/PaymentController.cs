@@ -29,7 +29,8 @@ namespace MiniStripe.API.Controllers
             // nameof(GetPaymentAsync) - tells ASP.NET which action to use for building the Location header URL
             // first new { id } - route values to build the Location URL e.g. /api/payment/{id}
             // second new { id } - the JSON response body returned to the client
-            return CreatedAtAction(nameof(GetPaymentAsync), new { id = id }, new { id = id });
+            //return CreatedAtAction(nameof(GetPaymentAsync), new { id = id }, new { id = id });
+            return Created($"/api/payment/{id}", new { id });
         }
 
         [HttpPost("{id}/confirm")]
