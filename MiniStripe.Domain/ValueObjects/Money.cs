@@ -2,8 +2,8 @@ namespace MiniStripe.Domain.ValueObjects;
 
 public class Money
 {
-    public decimal Amount {get; init;}
-    public string Currency {get; init;} = string.Empty;
+    public decimal Amount {get;}
+    public string Currency {get;}
 
 
     public Money(decimal amount, string currency)
