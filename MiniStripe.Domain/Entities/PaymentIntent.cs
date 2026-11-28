@@ -27,7 +27,7 @@ public class PaymentIntent
 
     private PaymentIntent() { Amount = null!;}
 
-    public void Complete()
+    public void Confirm()
     {
         if (this.Status != PaymentStatus.Pending)
         {

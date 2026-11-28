@@ -21,7 +21,7 @@ namespace MiniStripe.Application.Commands
             var succeeded = _random.Next(0, 2) == 1;
 
             if (succeeded) 
-                paymentIntent.Complete();
+                paymentIntent.Confirm();
             else 
                 paymentIntent.Fail();
 
